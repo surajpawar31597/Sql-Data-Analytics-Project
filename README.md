@@ -3,7 +3,6 @@
 ## 📌 Project Overview
 This project demonstrates advanced SQL data analytics techniques applied to a relational sales database (`fact_sales`, `dim_customers`, and `dim_products`). The objective is to extract actionable business insights through time-series trends, cumulative aggregations, Year-over-Year (YoY) product performance, category contribution analysis, and behavioral segmentation, culminating in two reusable SQL views (`report_customers` and `report_products`) for BI dashboards and executive reporting.
 
-![Database Architecture](assets/schema_workflow.png)
 
 ---
 
@@ -61,21 +60,9 @@ Creates the `report_customers` view consolidating customer demographics, transac
 * **Segments:** `VIP`, `Regular`, `New` and Age Groups (`Under 20`, `20-29`, `30-39`, `40-49`, `50 and above`).
 * **Metrics & KPIs:** Total Orders, Total Sales, Total Quantity, Total Products, Lifespan (Months), **Recency**, **Average Order Value (AOV)**, and **Average Monthly Spend**.
 
-![Customer Report Overview](assets/customer_report_overview.png)
+
 
 ### 📦 Product Report (`07_report_products.sql`)
 Creates the `report_products` view consolidating product performance and revenue KPIs:
 * **Segments:** `High-Performer` (> $50,000), `Mid-Range` ($10,000–$50,000), and `Low-Performer` (< $10,000).
 * **Metrics & KPIs:** Total Orders, Total Sales, Total Quantity Sold, Unique Customers, Average Selling Price, Lifespan, **Recency (Months)**, **Average Order Revenue (AOR)**, and **Average Monthly Revenue**.
-
-![Product Report Overview](assets/product_report_overview.png)
-
----
-
-## 🚀 How to Use
-1. Clone this repository:
-   ```bash
-   git clone [https://github.com/your-username/sql-data-analytics-project.git](https://github.com/your-username/sql-data-analytics-project.git)
-   ```
-2. Open the `.sql` scripts inside the `scripts/` folder in **SQL Server Management Studio (SSMS)** or **Azure Data Studio**.
-3. Ensure your database contains `fact_sales`, `dim_customers`, and `dim_products`, then execute scripts `01` through `07` sequentially.
