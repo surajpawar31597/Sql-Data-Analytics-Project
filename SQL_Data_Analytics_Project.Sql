@@ -1,8 +1,8 @@
 #1 Change over time analysis
 Analyze sales performance over time.
-
+============================================
 Year on year sales
-
+============================================
 select
 year(order_date) as Order_Year,
 sum(sales_amount) as total_sales,
@@ -12,9 +12,9 @@ from fact_sales
 where order_date is not  null
 group by year(order_date)
 order  by year(order_date)
-
+============================================
 Month on Month sales
-
+============================================
 select
 Month(order_date) as Order_Month,
 sum(sales_amount) as total_sales,
@@ -24,9 +24,7 @@ from fact_sales
 where order_date is not  null
 group by month(order_date)
 order  by month(order_date)
-
-
-
+=============================================
 select
 year(order_date) as Order_Year,
 Month(order_date) as Order_Month,
@@ -36,10 +34,10 @@ sum(quantity) as total_quantity
 from fact_sales
 where order_date is not  null
 group by year(order_date), month(order_date)  (Combined Year + Month Sales)
-
+============================================================================================================================================================================================================================
 #2 Cumulative Analysis:-
 Calculate the total sales per month and the running total of sales over time
-
+============================================================================================================================================================================================================================
 Select
 order_date,
 total_sales,
@@ -84,10 +82,10 @@ where order_date is not null
 group by datetrunc(Month, order_date)
 ) as sub
 order by order_date (Running avg price)
-
+============================================================================================================================================================================================================================
 #3 Performance Analysis: - Year  on Year
 Analyze the yearly performance of products by comparing each product's sales to both its average sales performance and the previous year's sales.
-
+============================================================================================================================================================================================================================
 With yearly_product_sales as (
 select
 year(F.order_date) as order_year,
@@ -105,11 +103,10 @@ product_name,
 current_sales,
 avg(Current_sales) over (partition by product_name) as Avg_sales
 from yearly_product_sales
-
+============================================================================================================================================================================================================================
 #4 Part to whole analysis
-
 Which categories contribute the most to overall sales?
-
+============================================================================================================================================================================================================================
 With Category_sales as (
 Select
 category,
@@ -126,11 +123,10 @@ sum(total_sales) over () Overall_sales,
 concat(round((cast(total_sales as float) / sum(total_sales) over ())*100, 2), '%') as percentage_of_total_sales
 from category_sales
 order by total_sales Desc
-
+============================================================================================================================================================================================================================
 #5 Data Segmentation
-
 Select how many products fall into each segment
-
+============================================================================================================================================================================================================================
 With Product_Segment as (
 Select
 product_key,
@@ -183,9 +179,9 @@ from customer_spending ) as sub
 group by customer_segment
 order by total_customers Desc
 /*
-===============================================================================
+============================================================================================================================================================================================================================
 Customer Report
-===============================================================================
+============================================================================================================================================================================================================================
 Purpose:
     - This report consolidates key customer metrics and behaviors
 
@@ -202,12 +198,12 @@ Highlights:
         - recency (months since last order)
         - average order value
         - average monthly spend
-===============================================================================
+============================================================================================================================================================================================================================
 */
 
--- =============================================================================
+-- =========================================================================================================================================================================================================================
 -- Create Report: report_customers
--- =============================================================================
+-- =========================================================================================================================================================================================================================
 IF OBJECT_ID('report_customers', 'V') IS NOT NULL
     DROP VIEW report_customers;
 GO
