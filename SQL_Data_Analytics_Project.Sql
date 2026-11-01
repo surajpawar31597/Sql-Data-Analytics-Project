@@ -69,6 +69,7 @@ order by order_date (Running total sales - Partition by year)
 Select
 order_date,
 total_sales,
+Avg_price,
 Sum(Total_sales) over ( partition by order_date order by order_date) as running_total_sales,
 Avg(avg_price) over ( partition by order_date order by order_date) as running_avg_price
 from
