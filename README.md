@@ -28,23 +28,23 @@ The project follows a **Star Schema** data model consisting of one central fact 
 
 ## 📈 Analytical Modules & Key Insights
 
-### 1. Change Over Time Analysis (`01_change_over_time_analysis.sql`)
+### 1. Change Over Time Analysis 
 * **Objective:** Track sales revenue, distinct customer count, and total quantity sold across years and months.
 * **Insight:** Identifies macro growth trends and seasonal peaks/troughs across different months of the year.
 
-### 2. Cumulative Analysis (`02_cumulative_analysis.sql`)
+### 2. Cumulative Analysis
 * **Objective:** Compute monthly running total sales and moving average prices using window functions (`SUM() OVER` and `AVG() OVER`).
 * **Insight:** Measures long-term revenue momentum and price stability across historical periods.
 
-### 3. Performance Analysis (`03_performance_analysis.sql`)
+### 3. Performance Analysis 
 * **Objective:** Evaluate yearly product sales (`Current_sales`) against each product's historical average (`AVG() OVER (PARTITION BY product_name)`).
 * **Insight:** Pinpoints which products are outperforming or underperforming their historical baseline.
 
-### 4. Part-to-Whole Analysis (`04_part_to_whole_analysis.sql`)
+### 4. Part-to-Whole Analysis 
 * **Objective:** Calculate each product category's percentage contribution to overall company revenue.
 * **Insight:** Highlights core revenue-driving categories (Pareto principle) to guide inventory and marketing focus.
 
-### 5. Data Segmentation (`05_data_segmentation.sql`)
+### 5. Data Segmentation 
 * **Product Cost Tiers:** Categorizes products into `Below 100`, `100-500`, `500-1000`, and `Above 1000`.
 * **Customer Tiers:** Groups customers by lifespan and total spend:
   * **VIP:** Lifespan ≥ 12 months and spending > $5,000
@@ -55,14 +55,14 @@ The project follows a **Star Schema** data model consisting of one central fact 
 
 ## 📋 Consolidated Analytical Reports (SQL Views)
 
-### 👥 Customer Report (`06_report_customers.sql`)
+### 👥 Customer Report 
 Creates the `report_customers` view consolidating customer demographics, transaction history, and behavioral KPIs:
 * **Segments:** `VIP`, `Regular`, `New` and Age Groups (`Under 20`, `20-29`, `30-39`, `40-49`, `50 and above`).
 * **Metrics & KPIs:** Total Orders, Total Sales, Total Quantity, Total Products, Lifespan (Months), **Recency**, **Average Order Value (AOV)**, and **Average Monthly Spend**.
 
 
 
-### 📦 Product Report (`07_report_products.sql`)
+### 📦 Product Report 
 Creates the `report_products` view consolidating product performance and revenue KPIs:
 * **Segments:** `High-Performer` (> $50,000), `Mid-Range` ($10,000–$50,000), and `Low-Performer` (< $10,000).
 * **Metrics & KPIs:** Total Orders, Total Sales, Total Quantity Sold, Unique Customers, Average Selling Price, Lifespan, **Recency (Months)**, **Average Order Revenue (AOR)**, and **Average Monthly Revenue**.
